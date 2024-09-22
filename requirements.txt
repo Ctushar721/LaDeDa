@@ -1,6 +1,5 @@
 albumentations==1.4.0
 appdirs==1.4.4
-bagnets==0.1
 certifi==2024.2.2
 charset-normalizer==3.3.2
 click==8.1.7
