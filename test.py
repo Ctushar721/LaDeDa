@@ -23,6 +23,7 @@ def test_model(model):
     accs, aps = [], []
     for v_id, val in enumerate(vals):
         print(f"eval on {val}")
+        print('Testopt.dataroot', Testopt.dataroot)
         Testopt.dataroot = '{}/{}'.format(Testdataroot, val)
         print('Testopt.dataroot', Testopt.dataroot)
         Testopt.classes = os.listdir(Testopt.dataroot) if multiclass[v_id] else ['']

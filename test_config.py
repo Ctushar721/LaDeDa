@@ -1,5 +1,5 @@
 # root to the testsets
-Testdataroot = 'PATH_TO_TEST_SET'
+Testdataroot = '/content/drive/MyDrive/LaDeDa/WildRF'
 
 
 # WildRF test set
@@ -17,4 +17,4 @@ multiclass = [0, 0, 0]
 
 
 # model
-model_path = 'weights/LaDeDa/WildRF_LaDeDa.pth'
+model_path = '/content/drive/MyDrive/LaDeDa/weights/WildRF_LaDeDa.pth'
