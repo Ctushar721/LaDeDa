@@ -1,5 +1,5 @@
 # root to the testsets
-Testdataroot = '/content/drive/MyDrive/LaDeDa/WildRF'
+Testdataroot = '/content/drive/MyDrive/LaDeDa/WildRF/test'
 
 
 # WildRF test set
