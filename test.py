@@ -5,10 +5,7 @@ import torch.nn
 import argparse
 import numpy as np
 from options.test_options import TestOptions
-from util import Logger
 from validate import validate
-import torchvision
-from torchvision import transforms
 import random
 from networks.LaDeDa import LaDeDa9
 from networks.Tiny_LaDeDa import tiny_ladeda
