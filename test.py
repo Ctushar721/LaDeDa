@@ -59,5 +59,6 @@ if __name__ == '__main__':
     # LaDeDa's features_dim = 2048
     # Tiny-LaDeDa's features_dim = 8
     print("Testopt.features_dim", Testopt.features_dim)
-    model = get_model(model_path, features_dim=Testopt.features_dim)
+    print("Testopt.model_path", Testopt.model_path)
+    model = get_model(Testopt.model_path, features_dim=Testopt.features_dim)
     test_model(model)
