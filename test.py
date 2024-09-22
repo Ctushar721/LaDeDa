@@ -24,6 +24,7 @@ def test_model(model):
     for v_id, val in enumerate(vals):
         print(f"eval on {val}")
         Testopt.dataroot = '{}/{}'.format(Testdataroot, val)
+        print('Testopt.dataroot', Testopt.dataroot)
         Testopt.classes = os.listdir(Testopt.dataroot) if multiclass[v_id] else ['']
         Testopt.no_resize = False
         Testopt.no_crop = True
