@@ -39,7 +39,7 @@ def test_model(model):
 
 
 def get_model(model_path, features_dim):
-    model = LaDeDa9(num_classes=1)
+    model = LaDeDa9(preprocess_type='NPR', num_classes=1)
     model.fc = torch.nn.Linear(features_dim, 1)
     from collections import OrderedDict
     from copy import deepcopy
