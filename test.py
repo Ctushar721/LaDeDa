@@ -24,7 +24,7 @@ def test_model(model):
     for v_id, val in enumerate(vals):
         print(f"eval on {val}")
         print('Testopt.dataroot', Testopt.dataroot)
-        Testopt.dataroot = '{}/{}'.format(Testdataroot, val)
+        Testopt.dataroot = '{}/{}'.format(Testopt.dataroot, val)
         print('Testopt.dataroot', Testopt.dataroot)
         Testopt.classes = os.listdir(Testopt.dataroot) if multiclass[v_id] else ['']
         Testopt.no_resize = False
@@ -60,7 +60,5 @@ if __name__ == '__main__':
     # evaluate model
     # LaDeDa's features_dim = 2048
     # Tiny-LaDeDa's features_dim = 8
-    print("Testopt.features_dim", Testopt.features_dim)
-    print("Testopt.model_path", Testopt.model_path)
     model = get_model(Testopt.model_path, features_dim=Testopt.features_dim)
     test_model(model)
