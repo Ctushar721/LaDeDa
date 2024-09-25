@@ -41,6 +41,7 @@ def test_model(model):
 
 
 def get_model(model_path, features_dim):
+    print("Testopt.preprocess is:", Testopt.preprocess)
     model = LaDeDa9(preprocess_type=Testopt.preprocess, num_classes=1)
     model.fc = torch.nn.Linear(features_dim, 1)
     from collections import OrderedDict
