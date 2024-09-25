@@ -24,6 +24,19 @@ def validate(model, opt):
     auc = roc_auc_score(y_true, y_pred)
     precision = precision_score(y_true, y_pred > 0.5)
     recall = recall_score(y_true, y_pred > 0.5)
+    # True Positives
+    TP = np.sum((y_true == 1) & (y_pred > 0.5))
+    # True Negatives
+    TN = np.sum((y_true == 0) & (y_pred <= 0.5))
+    # False Positives
+    FP = np.sum((y_true == 0) & (y_pred > 0.5))
+    # False Negatives
+    FN = np.sum((y_true == 1) & (y_pred <= 0.5))
+    print(f'RESULT: TP: {TP}')
+    print(f'RESULT: FP: {FP}')
+    print(f'RESULT: FN: {FN}')
+    print(f'RESULT: TN: {TN}')
+    print(f'RESULT: acc: {acc}, ap: {ap}, r_acc: {r_acc}, f_acc: {f_acc}, auc: {auc}, precision: {precision}, recall: {recall}')
     return acc, ap, r_acc, f_acc, auc, precision, recall
 
 
