@@ -59,6 +59,7 @@ def get_model(model_path, features_dim):
 if __name__ == '__main__':
     set_seed(42)
     Testopt = TestOptions().parse(print_options=False)
+    print(Testopt.preprocess)
     # evaluate model
     # LaDeDa's features_dim = 2048
     # Tiny-LaDeDa's features_dim = 8
