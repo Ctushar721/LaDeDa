@@ -41,7 +41,7 @@ def test_model(model):
 
 
 def get_model(model_path, features_dim):
-    model = LaDeDa9(preprocess_type='NPR', num_classes=1)
+    model = LaDeDa9(preprocess_type=Testopt.preprocess, num_classes=1)
     model.fc = torch.nn.Linear(features_dim, 1)
     from collections import OrderedDict
     from copy import deepcopy
@@ -59,7 +59,6 @@ def get_model(model_path, features_dim):
 if __name__ == '__main__':
     set_seed(42)
     Testopt = TestOptions().parse(print_options=False)
-    print(Testopt.preprocess)
     # evaluate model
     # LaDeDa's features_dim = 2048
     # Tiny-LaDeDa's features_dim = 8
