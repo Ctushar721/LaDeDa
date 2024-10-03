@@ -23,6 +23,7 @@ def set_seed(seed=42):
 def test_model(model):
     accs, aps = [], []
     vals_array = Testopt.vals.split(',')
+    multiclass = Testopt.multiclass.split(',')
     print(f'vals_array: {vals_array}')
     for v_id, val in enumerate(vals_array):
         print(f"eval on {val}")

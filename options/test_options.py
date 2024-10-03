@@ -14,6 +14,7 @@ class TestOptions(BaseOptions):
         parser.add_argument('--niter', type=int, default=0, help='# of iter at starting learning rate')
         parser.add_argument('--is_aug', action='store_true')
         parser.add_argument('--vals')
+        parser.add_argument('--multiclass')
 
         self.isTrain = False
         return parser
