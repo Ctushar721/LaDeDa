@@ -32,11 +32,11 @@ def validate(model, opt):
     FP = np.sum((y_true == 0) & (y_pred > 0.5))
     # False Negatives
     FN = np.sum((y_true == 1) & (y_pred <= 0.5))
-    print(f'RESULT: ##TP_#_{TP}##')
-    print(f'RESULT: ##FP_#_{FP}##')
-    print(f'RESULT: ##FN_#_{FN}##')
-    print(f'RESULT: ##TN_#_{TN}##')
-    print(f'RESULT: ##acc_#_{acc}##, ##ap_#_{ap}##, r_acc:{r_acc}, f_acc:{f_acc}, auc:{auc}, precision:{precision}, recall:{recall}')
+    print(f'RESULT: ##{opt.dataroot}_#_TP_#_{TP}##')
+    print(f'RESULT: ##{opt.dataroot}_#_FP_#_{FP}##')
+    print(f'RESULT: ##{opt.dataroot}_#_FN_#_{FN}##')
+    print(f'RESULT: ##{opt.dataroot}_#_TN_#_{TN}##')
+    print(f'RESULT: ##{opt.dataroot}_#_acc_#_{acc}##, ##{opt.dataroot}_#_ap_#_{ap}##, r_acc:{r_acc}, f_acc:{f_acc}, auc:{auc}, precision:{precision}, recall:{recall}')
     return acc, ap, r_acc, f_acc, auc, precision, recall
 
 
