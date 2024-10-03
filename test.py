@@ -22,7 +22,9 @@ def set_seed(seed=42):
 
 def test_model(model):
     accs, aps = [], []
-    for v_id, val in enumerate(vals):
+    vals_array = Testopt.vals.split(',')
+    print(f'vals_array: {vals_array}')
+    for v_id, val in enumerate(vals_array):
         print(f"eval on {val}")
         print('Testopt.dataroot', Testopt.dataroot)
         opts = copy.deepcopy(Testopt)
