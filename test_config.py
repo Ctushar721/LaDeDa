@@ -1,5 +1,5 @@
 # WildRF test set
-vals = ["reddit", "twitter", "facebook"]
+vals = ["dalle3", "midjourney", "sd1"]
 multiclass = [0, 0, 0]
 
 # ForenSynth test set
