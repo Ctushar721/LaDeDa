@@ -1,3 +1,4 @@
+import copy
 import os
 import sys
 import torch
@@ -5,10 +6,7 @@ import torch.nn
 import argparse
 import numpy as np
 from options.test_options import TestOptions
-from util import Logger
 from validate import validate
-import torchvision
-from torchvision import transforms
 import random
 from networks.LaDeDa import LaDeDa9
 from networks.Tiny_LaDeDa import tiny_ladeda
@@ -24,14 +22,20 @@ def set_seed(seed=42):
 
 def test_model(model):
     accs, aps = [], []
-    for v_id, val in enumerate(vals):
+    vals_array = Testopt.vals.split(',')
+    multiclass = list(map(int, Testopt.multiclass.split(',')))
+    print(f'vals_array: {vals_array}')
+    for v_id, val in enumerate(vals_array):
         print(f"eval on {val}")
-        Testopt.dataroot = '{}/{}'.format(Testdataroot, val)
-        Testopt.classes = os.listdir(Testopt.dataroot) if multiclass[v_id] else ['']
-        Testopt.no_resize = False
-        Testopt.no_crop = True
-        Testopt.is_aug = False
-        acc, ap, r_acc, f_acc, auc, precision, recall = validate(model, Testopt)
+        print('Testopt.dataroot', Testopt.dataroot)
+        opts = copy.deepcopy(Testopt)
+        opts.dataroot = '{}/{}'.format(opts.dataroot, val)
+        print('opts.dataroot', opts.dataroot)
+        opts.classes = os.listdir(opts.dataroot) if multiclass[v_id] else ['']
+        opts.no_resize = False
+        opts.no_crop = True
+        opts.is_aug = False
+        acc, ap, r_acc, f_acc, auc, precision, recall = validate(model, opts)
         accs.append(acc)
         aps.append(ap)
         print("({} {:10}) acc: {:.1f}; ap: {:.1f};".format(v_id, val, acc * 100, ap * 100))
@@ -40,8 +44,9 @@ def test_model(model):
 
 
 def get_model(model_path, features_dim):
-    model = LaDeDa9(pretrained=False, num_classes=1)
-    model.fc = nn.Linear(features_dim, 1)
+    print("Testopt.preprocess is:", Testopt.preprocess)
+    model = LaDeDa9(preprocess_type=Testopt.preprocess, num_classes=1)
+    model.fc = torch.nn.Linear(features_dim, 1)
     from collections import OrderedDict
     from copy import deepcopy
     state_dict = torch.load(model_path, map_location='cpu')
@@ -61,5 +66,5 @@ if __name__ == '__main__':
     # evaluate model
     # LaDeDa's features_dim = 2048
     # Tiny-LaDeDa's features_dim = 8
-    model = get_model(model_path, features_dim=opt.features_dim)
+    model = get_model(Testopt.model_path, features_dim=Testopt.features_dim)
     test_model(model)

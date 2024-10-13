@@ -43,7 +43,7 @@ def binary_dataset(opt, root):
     else:
         print("NO aug")
         aug_func = transforms.Lambda(lambda img: img)
-
+    print(root, root)
     dset = datasets.ImageFolder(
         root,
         transforms.Compose([

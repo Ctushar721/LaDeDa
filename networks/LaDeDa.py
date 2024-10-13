@@ -54,7 +54,7 @@ class Bottleneck(nn.Module):
 
 class LaDeDa(nn.Module):
 
-    def __init__(self, block, layers, strides=[1, 2, 2, 2], kernel3=[0, 0, 0, 0], preprocess_type, num_classes=1, pool=True):
+    def __init__(self, block, layers, strides=[1, 2, 2, 2], kernel3=[0, 0, 0, 0], preprocess_type="raw", num_classes=1, pool=True):
         self.inplanes = 64
         super(LaDeDa, self).__init__()
         self.conv1 = nn.Conv2d(3, 64, kernel_size=1, stride=1, padding=0, bias=False)
@@ -153,21 +153,21 @@ class LaDeDa(nn.Module):
         return x
 
 
-def LaDeDa33(strides=[2, 2, 2, 1], preprocess_type, **kwargs):
-    model = LaDeDa(Bottleneck, [3, 4, 6, 3], strides=strides, kernel3=[1, 1, 1, 1], preprocess_type, **kwargs)
+def LaDeDa33(preprocess_type, strides=[2, 2, 2, 1], **kwargs):
+    model = LaDeDa(Bottleneck, [3, 4, 6, 3], strides=strides, kernel3=[1, 1, 1, 1], preprocess_type=preprocess_type, **kwargs)
     return model
 
 
-def LaDeDa17(strides=[2, 2, 2, 1], preprocess_type, **kwargs):
-    model = LaDeDa(Bottleneck, [3, 4, 6, 3], strides=strides, kernel3=[1, 1, 1, 0], preprocess_type, **kwargs)
+def LaDeDa17(preprocess_type, strides=[2, 2, 2, 1], **kwargs):
+    model = LaDeDa(Bottleneck, [3, 4, 6, 3], strides=strides, kernel3=[1, 1, 1, 0], preprocess_type=preprocess_type, **kwargs)
     return model
 
 
-def LaDeDa9(strides=[2, 2, 2, 1], preprocess_type, **kwargs):
-    model = LaDeDa(Bottleneck, [3, 4, 6, 3], strides=strides, kernel3=[1, 1, 0, 0], preprocess_type, **kwargs)
+def LaDeDa9(preprocess_type, strides=[2, 2, 2, 1], **kwargs):
+    model = LaDeDa(Bottleneck, [3, 4, 6, 3], strides=strides, kernel3=[1, 1, 0, 0], preprocess_type=preprocess_type, **kwargs)
     return model
 
-def LaDeDa5(strides=[2, 2, 2, 1], preprocess_type, **kwargs):
-    model = LaDeDa(Bottleneck, [3, 4, 6, 3], strides=strides, kernel3=[1, 0, 0, 0], preprocess_type, **kwargs)
+def LaDeDa5(preprocess_type, strides=[2, 2, 2, 1],  **kwargs):
+    model = LaDeDa(Bottleneck, [3, 4, 6, 3], strides=strides, kernel3=[1, 0, 0, 0], preprocess_type=preprocess_type, **kwargs)
     return model
 
